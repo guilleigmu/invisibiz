@@ -18,6 +18,7 @@ export default function Search() {
     []
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = async (query: string, location: string) => {
     // Aquí iría la lógica para buscar negocios sin página web y con página web no optimizada
     // Por ahora, usaremos datos de ejemplo
