@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ScanSearch } from "lucide-react"; // Add this import
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="bg-background border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -13,17 +18,29 @@ export default function Header() {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <Button variant="ghost" asChild>
+              <Button
+                variant="ghost"
+                asChild
+                className={pathname === "/dashboard" ? "font-bold" : ""}
+              >
                 <Link href="/dashboard">Dashboard</Link>
               </Button>
             </li>
             <li>
-              <Button variant="ghost" asChild>
+              <Button
+                variant="ghost"
+                asChild
+                className={pathname === "/history" ? "font-bold" : ""}
+              >
                 <Link href="/history">Historial</Link>
               </Button>
             </li>
             <li>
-              <Button variant="ghost" asChild>
+              <Button
+                variant="ghost"
+                asChild
+                className={pathname === "/config" ? "font-bold" : ""}
+              >
                 <Link href="/config">Configuración</Link>
               </Button>
             </li>

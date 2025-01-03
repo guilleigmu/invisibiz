@@ -21,6 +21,7 @@ export default function Search() {
   const handleSearch = async (query: string, location: string) => {
     console.log("Query", query);
     console.log("Location", location);
+    console.log("Fetch in", `/api/search?query=${query}+en+${location}`);
 
     // const res = await fetch(`/api/search?query=${query}+en+${location}`);
     // const data = await res.json();

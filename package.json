@@ -16,6 +16,7 @@
     "jsdom": "^25.0.1",
     "lucide-react": "^0.469.0",
     "next": "15.1.3",
+    "nextjs-toploader": "^3.7.15",
     "puppeteer": "^23.11.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
