@@ -31,7 +31,9 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <Button type="submit">Buscar</Button>
+        <Button type="submit" disabled={query === "" || location === ""}>
+          Buscar
+        </Button>
       </div>
     </form>
   );

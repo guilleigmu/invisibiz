@@ -18,10 +18,14 @@ export default function Search() {
     []
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = async (query: string, location: string) => {
-    // Aquí iría la lógica para buscar negocios sin página web y con página web no optimizada
-    // Por ahora, usaremos datos de ejemplo
+    console.log("Query", query);
+    console.log("Location", location);
+
+    // const res = await fetch(`/api/search?query=${query}+en+${location}`);
+    // const data = await res.json();
+    // console.log(data);
+
     const mockNoWebResults: Business[] = [
       {
         id: "1",
@@ -72,12 +76,20 @@ export default function Search() {
   };
 
   return (
-    <>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SearchBar onSearch={handleSearch} />
       <ResultsTabs
-        noWebResults={noWebResults}
+        noWebResults={[
+          ...noWebResults,
+          ...noWebResults,
+          ...noWebResults,
+          ...noWebResults,
+          ...noWebResults,
+          ...noWebResults,
+          ...noWebResults,
+        ]}
         notOptimizedResults={notOptimizedResults}
       />
-    </>
+    </div>
   );
 }

@@ -19,11 +19,8 @@ export default function ResultsTabs({
   notOptimizedResults,
 }: ResultsTabsProps) {
   return (
-    <Tabs
-      defaultValue="noWeb"
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-    >
-      <TabsList className="grid w-full grid-cols-2">
+    <Tabs defaultValue="noWeb" className="flex flex-col">
+      <TabsList className="grid grid-cols-2 mr-auto">
         <TabsTrigger value="noWeb">Sin web</TabsTrigger>
         <TabsTrigger value="notOptimized">Sin optimizar</TabsTrigger>
       </TabsList>
