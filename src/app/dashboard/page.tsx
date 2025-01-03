@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Search from "./Search";
+import ScrapeButton from "./ScrapeButton";
 
 export default function Dashboard() {
   return (
@@ -11,6 +12,7 @@ export default function Dashboard() {
             Buscar Oportunidades
           </h1>
           <Search />
+          <ScrapeButton />
         </div>
       </main>
     </div>
