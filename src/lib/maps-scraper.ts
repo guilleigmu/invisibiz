@@ -110,7 +110,7 @@ export function MapsScraper() {
         `document.querySelector("${SCROLL_SELECTOR}").scrollTo(0, document.querySelector("${SCROLL_SELECTOR}").scrollHeight)`
       );
 
-      await sleep(2000);
+      await sleep(1000);
       const newHeight = await page.evaluate(
         `document.querySelector("${SCROLL_SELECTOR}").scrollHeight`
       );
@@ -121,21 +121,21 @@ export function MapsScraper() {
     }
   }
 
-  async function scrape(query: string, lang?: string) {
+  async function scrape(query: string, allResults?: boolean, lang?: string) {
     const url = `https://www.google.com/maps/search/${query}${
       lang ? `/?=hl=${lang}` : ""
     }`.trim();
-
-    console.log("Scraping in", url);
 
     page = await browser.newPage();
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     );
     await page.goto(url);
-
     await acceptCookies();
-    //await scrollPage();
+
+    if (allResults) {
+      await scrollPage();
+    }
     const data = await scrapeBusinesses();
 
     await browser.close();

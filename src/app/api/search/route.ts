@@ -15,7 +15,7 @@ export const GET = async (req: Request) => {
 
   const scraper = MapsScraper();
   await scraper.init();
-  const data = await scraper.scrape(query);
+  const data = await scraper.scrape(query, false);
 
   data.forEach(async (business) => {
     await db.insert(businesses).values({
@@ -24,7 +24,12 @@ export const GET = async (req: Request) => {
       reviews: business.reviews || "",
       type: business.type || "",
       address: business.address || "",
-      website: business.website || "",
+      phone: business.phone || "",
+      description: business.description || "",
+      serviceOptions: business.serviceOptions || "",
+      placeUrl: business.placeUrl || "",
+      website: business.website || null,
+      dataId: business.dataId || "",
     });
   });
 
