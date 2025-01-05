@@ -27,7 +27,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
         />
         <Input
           type="text"
-          placeholder="Ubicación (ej: Málaga)"
+          placeholder="Ubicación (ej: Gijón)"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />

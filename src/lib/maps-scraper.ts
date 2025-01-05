@@ -46,7 +46,7 @@ export function MapsScraper() {
         )[0];
 
         return {
-          title: el.querySelector(".qBF1Pd")?.textContent?.trim(),
+          name: el.querySelector(".qBF1Pd")?.textContent?.trim(),
           rating: el.querySelector(".MW4etd")?.textContent?.trim(),
           reviews: el
             .querySelector(".UY7F9")
@@ -135,7 +135,7 @@ export function MapsScraper() {
     await page.goto(url);
 
     await acceptCookies();
-    await scrollPage();
+    //await scrollPage();
     const data = await scrapeBusinesses();
 
     await browser.close();

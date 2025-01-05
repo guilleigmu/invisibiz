@@ -23,9 +23,9 @@ export default function Search() {
     console.log("Location", location);
     console.log("Fetch in", `/api/search?query=${query}+en+${location}`);
 
-    // const res = await fetch(`/api/search?query=${query}+en+${location}`);
-    // const data = await res.json();
-    // console.log(data);
+    const res = await fetch(`/api/search?query=${query}+en+${location}`);
+    const data = await res.json();
+    console.log(data);
 
     const mockNoWebResults: Business[] = [
       {

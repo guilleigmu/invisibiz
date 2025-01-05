@@ -11,10 +11,10 @@ export default function Header() {
   return (
     <header className="bg-background border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center">
+        <Link className="flex items-center" href={"/"}>
           <ScanSearch className="w-6 h-6 text-primary" />
           <span className="ml-2 text-xl font-bold text-primary">InvisiBiz</span>
-        </div>
+        </Link>
         <nav>
           <ul className="flex space-x-4">
             <li>
