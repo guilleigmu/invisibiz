@@ -110,7 +110,7 @@ export function MapsScraper() {
         `document.querySelector("${SCROLL_SELECTOR}").scrollTo(0, document.querySelector("${SCROLL_SELECTOR}").scrollHeight)`
       );
 
-      await sleep(1000);
+      await sleep(2000);
       const newHeight = await page.evaluate(
         `document.querySelector("${SCROLL_SELECTOR}").scrollHeight`
       );

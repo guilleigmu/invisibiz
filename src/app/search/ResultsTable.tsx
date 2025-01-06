@@ -35,6 +35,14 @@ export default function ResultsTable({
                   >
                     Tipo
                   </th>
+                  {!showWebsite && (
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Info Extra
+                    </th>
+                  )}
                   {showWebsite && (
                     <th
                       scope="col"
@@ -57,6 +65,11 @@ export default function ResultsTable({
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {business.type}
                     </td>
+                    {!showWebsite && (
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {business.description}
+                      </td>
+                    )}
                     {showWebsite && business.website && (
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <a
