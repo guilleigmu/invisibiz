@@ -1,4 +1,4 @@
-import ResultsTabs from "@/components/ResultsTabs";
+import ResultsTabs from "../ResultsTabs";
 import SearchBar from "../SearchBar";
 import { getSearchBySlug } from "@/app/data-access/searches";
 import { getBusinessesBySearchId } from "@/app/data-access/businesses";

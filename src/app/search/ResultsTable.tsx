@@ -33,7 +33,7 @@ export default function ResultsTable({
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    Teléfono
+                    Tipo
                   </th>
                   {showWebsite && (
                     <th
@@ -55,7 +55,7 @@ export default function ResultsTable({
                       {business.reviews}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {business.description}
+                      {business.type}
                     </td>
                     {showWebsite && business.website && (
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">

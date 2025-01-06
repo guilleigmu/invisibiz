@@ -58,7 +58,6 @@ async function scrapeAndSave(query: string, searchId: number) {
     });
   });
 
-  // Update search status in database
   await updateSearch(searchId, {
     status: "fulfilled",
     resultsCount: data.length,
