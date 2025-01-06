@@ -1,8 +1,10 @@
 import { Browser, Page } from "puppeteer";
+import { Browser as CoreBrowser } from "puppeteer-core";
 import { sleep } from "./utils";
+import chromium from "@sparticuz/chromium-min";
 
 export function MapsScraper() {
-  let browser: Browser;
+  let browser: Browser | CoreBrowser;
   let page: Page;
 
   const SCROLL_SELECTOR = ".m6QErb[aria-label]";
@@ -10,11 +12,21 @@ export function MapsScraper() {
     "button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.LQeN7.XWZjwc";
 
   async function init() {
-    const puppeteer = await import("puppeteer");
-    browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      defaultViewport: { width: 1920, height: 1080 },
-    });
+    if (process.env.NODE_ENV === "production") {
+      const puppeteer = await import("puppeteer-core");
+      browser = await puppeteer.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      });
+    } else {
+      const puppeteer = await import("puppeteer");
+      browser = await puppeteer.launch({
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        defaultViewport: { width: 1920, height: 1080 },
+      });
+    }
   }
 
   async function acceptCookies() {
@@ -126,7 +138,7 @@ export function MapsScraper() {
       lang ? `/?=hl=${lang}` : ""
     }`.trim();
 
-    page = await browser.newPage();
+    page = (await browser.newPage()) as Page;
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     );
