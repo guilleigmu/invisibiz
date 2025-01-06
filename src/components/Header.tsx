@@ -21,9 +21,9 @@ export default function Header() {
               <Button
                 variant="ghost"
                 asChild
-                className={pathname === "/dashboard" ? "font-bold" : ""}
+                className={pathname === "/search" ? "font-bold" : ""}
               >
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/search">Búsqueda</Link>
               </Button>
             </li>
             <li>

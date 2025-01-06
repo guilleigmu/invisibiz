@@ -21,7 +21,9 @@ export const searches = createTable("search", {
   status: searchStatusEnum("status").default("processing").notNull(),
   business: text("business").notNull(),
   location: text("location").notNull(),
+  slug: text("slug").notNull(),
   resultsCount: integer("results_count").default(0).notNull(),
+  userId: text("user_id").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).default(
     sql`CURRENT_TIMESTAMP`
   ),
@@ -43,7 +45,7 @@ export const businesses = createTable("business", {
   placeUrl: text("place_url").notNull(),
   dataId: text("data_id").notNull(),
   website: text("website"),
-  searchId: text("userId")
+  searchId: integer("search_id")
     .notNull()
     .references(() => searches.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at", { withTimezone: true }).default(
@@ -59,8 +61,13 @@ export const searchesRelations = relations(searches, ({ many }) => ({
 }));
 
 export const businessesRelations = relations(businesses, ({ one }) => ({
-  user: one(searches, {
+  search: one(searches, {
     fields: [businesses.searchId],
     references: [searches.id],
   }),
 }));
+
+export type Business = typeof businesses.$inferSelect;
+
+export type Search = typeof searches.$inferSelect;
+export type SearchValues = typeof searches.$inferInsert;

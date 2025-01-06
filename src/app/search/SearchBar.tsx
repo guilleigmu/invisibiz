@@ -1,24 +1,25 @@
-import { useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { handleSearch } from "./actions";
 
-interface SearchBarProps {
-  onSearch: (query: string, location: string) => void;
-}
-
-export default function SearchBar({ onSearch }: SearchBarProps) {
+export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
+  const [userId, setUserId] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSearch(query, location);
-  };
+  useEffect(() => {
+    setUserId(localStorage.getItem("userId") || "");
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto mt-8 mb-8">
+    <form action={handleSearch} className="max-w-3xl mx-auto mt-8 mb-8">
+      <input type="hidden" name="userId" value={userId} />
       <div className="flex space-x-2">
         <Input
+          name="query"
           type="text"
           placeholder="Buscar negocios (ej: veterinarios)"
           value={query}
@@ -26,6 +27,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           className="flex-grow"
         />
         <Input
+          name="location"
           type="text"
           placeholder="Ubicación (ej: Gijón)"
           value={location}
