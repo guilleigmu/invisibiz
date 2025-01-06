@@ -21,9 +21,13 @@ export default function Header() {
               <Button
                 variant="ghost"
                 asChild
-                className={pathname === "/search" ? "font-bold" : ""}
+                className={
+                  pathname === "/" || pathname.includes("search")
+                    ? "font-bold"
+                    : ""
+                }
               >
-                <Link href="/search">Búsqueda</Link>
+                <Link href="/">Búsqueda</Link>
               </Button>
             </li>
             <li>
@@ -35,7 +39,7 @@ export default function Header() {
                 <Link href="/history">Historial</Link>
               </Button>
             </li>
-            <li>
+            {/*             <li>
               <Button
                 variant="ghost"
                 asChild
@@ -43,7 +47,7 @@ export default function Header() {
               >
                 <Link href="/config">Configuración</Link>
               </Button>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

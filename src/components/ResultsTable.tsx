@@ -1,10 +1,4 @@
-interface Business {
-  id: string;
-  name: string;
-  address: string;
-  phone: string;
-  website?: string;
-}
+import { Business } from "@/db/schema";
 
 interface ResultsTableProps {
   results: Business[];
@@ -33,7 +27,7 @@ export default function ResultsTable({
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    Dirección
+                    Reseñas
                   </th>
                   <th
                     scope="col"
@@ -58,12 +52,12 @@ export default function ResultsTable({
                       {business.name}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {business.address}
+                      {business.reviews}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {business.phone}
+                      {business.description}
                     </td>
-                    {showWebsite && (
+                    {showWebsite && business.website && (
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <a
                           href={business.website}

@@ -5,9 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { handleSearch } from "./actions";
 
-export default function SearchBar() {
-  const [query, setQuery] = useState("");
-  const [location, setLocation] = useState("");
+export default function SearchBar({
+  initialQuery,
+  initialLocation,
+}: {
+  initialQuery?: string;
+  initialLocation?: string;
+}) {
+  const [query, setQuery] = useState(initialQuery ?? "");
+  const [location, setLocation] = useState(initialLocation ?? "");
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
