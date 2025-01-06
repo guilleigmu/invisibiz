@@ -2,6 +2,7 @@ import { Browser, Page } from "puppeteer";
 import { Browser as CoreBrowser } from "puppeteer-core";
 import { sleep } from "./utils";
 import chromium from "@sparticuz/chromium-min";
+import { env } from "@/env";
 
 export function MapsScraper() {
   let browser: Browser | CoreBrowser;
@@ -12,7 +13,7 @@ export function MapsScraper() {
     "button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.LQeN7.XWZjwc";
 
   async function init() {
-    if (process.env.NODE_ENV === "production") {
+    if (env.NODE_ENV === "production") {
       const puppeteer = await import("puppeteer-core");
       browser = await puppeteer.launch({
         args: chromium.args,

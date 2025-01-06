@@ -5,7 +5,11 @@ import { getBusinessesBySearchId } from "@/app/data-access/businesses";
 import { LoaderCircle } from "lucide-react";
 import Poller from "./Poller";
 
-export default async function Search({ params }: { params: { slug: string } }) {
+export default async function Search({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const search = await getSearchBySlug(slug);
 
