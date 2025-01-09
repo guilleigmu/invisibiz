@@ -1,11 +1,10 @@
 import { Browser, Page } from "puppeteer";
-import { Browser as CoreBrowser } from "puppeteer-core";
 import { sleep } from "./utils";
 import chromium from "@sparticuz/chromium-min";
 import { env } from "@/env";
 
 export function MapsScraper() {
-  let browser: Browser | CoreBrowser;
+  let browser: Browser;
   let page: Page;
 
   const SCROLL_SELECTOR = ".m6QErb[aria-label]";
@@ -14,7 +13,7 @@ export function MapsScraper() {
 
   async function init() {
     if (env.NODE_ENV === "production") {
-      const puppeteer = await import("puppeteer-core");
+      const puppeteer = await import("puppeteer");
       browser = await puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
@@ -139,7 +138,7 @@ export function MapsScraper() {
       lang ? `/?=hl=${lang}` : ""
     }`.trim();
 
-    page = (await browser.newPage()) as Page;
+    page = await browser.newPage();
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     );

@@ -39,7 +39,9 @@ export async function handleSearch(formData: FormData) {
 async function scrapeAndSave(query: string, searchId: number) {
   const scraper = MapsScraper();
   await scraper.init();
-  const data = await scraper.scrape(query, true);
+  const data = await scraper.scrape(query, false);
+
+  console.log(data);
 
   data.forEach(async (business) => {
     await db.insert(businesses).values({
